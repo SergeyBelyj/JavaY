@@ -9,7 +9,6 @@ class   ParentOv {
         }
     }
 
-
 public static class Override {
     public static void main(String[] args) throws Exception {
         ParentOv parent = new ParentOv();
@@ -18,7 +17,4 @@ public static class Override {
         System.out.println(child.method());
     }
 }
-
-
-
 }
