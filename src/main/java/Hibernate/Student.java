@@ -28,7 +28,12 @@ import java.util.Date;
     private int isPlusAge;
 
 
-    Student() {
+    private Adress adress;
+
+
+    Student(String name, Days days) {
+        this.name = name;
+        this.days = days;
     }
 
 public Student(String name, Days days, Date date) {
@@ -67,5 +72,13 @@ public Student(String name, Days days, Date date) {
 
     public void setIsPlusAge(int isPlusAge) {
         this.isPlusAge = isPlusAge;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 }
