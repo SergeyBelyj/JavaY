@@ -4,6 +4,7 @@ import Hibernate.enums.Days;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
@@ -11,13 +12,13 @@ import java.util.Date;
 @Entity
 @Table(name = "student")
  class Student {
-    @Id
-    @GeneratedValue
-    int id;
+
+    private int id;
     @Basic
 //    @Column(name = "name")
 //    @Type(type =  "text")
-    String name;
+    @Access(AccessType.FIELD)
+  private   String name;
     @Enumerated(EnumType.STRING)
     private Days days;
 //    @Temporal(TemporalType.DATE)
@@ -46,26 +47,27 @@ public Student(String name, Days days, Date date) {
 
 
 
+    @Id
+    @GeneratedValue
+    public int getId() {
+        return id;
+    }
     public Days getDays() {
         return days;
     }
     public void setDays(Days days) {
         this.days = days;
     }
-
-    public int getId() {
-        return id;
-    }
     public void setId(int id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return "Mr." + name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name =  name;
     }
 
     public int getIsPlusAge() {
