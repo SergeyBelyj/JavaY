@@ -12,31 +12,34 @@ import java.util.Date;
     @Id
     @GeneratedValue
     int id;
-
     @Basic
 //    @Column(name = "name")
 //    @Type(type =  "text")
     String name;
 
+    @Enumerated(EnumType.STRING)
+    private Days days;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+
     Student() {
     }
+
+public Student(String name, Days days, Date date) {
+    this.days = days;
+    this.name = name;
+    this.date = date;
+}
+
+
 
     public Days getDays() {
         return days;
     }
-
     public void setDays(Days days) {
         this.days = days;
     }
-@Enumerated(EnumType.STRING)
-    private Days days;
-
-public Student(String name, Days days) {
-    this.days = days;
-    this.name = name;
-}
-
-
 
     public int getId() {
         return id;
