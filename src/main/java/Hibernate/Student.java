@@ -1,8 +1,10 @@
 package Hibernate;
 
 import Hibernate.enums.Days;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,7 +21,9 @@ import java.util.Date;
 
     @Enumerated(EnumType.STRING)
     private Days days;
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
+ //   @CreationTimestamp
+    @UpdateTimestamp
     private Date date;
 
 
