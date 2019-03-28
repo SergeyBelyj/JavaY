@@ -14,10 +14,10 @@ import java.util.UUID;
 @Entity
 @Table(name = "student")
  class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
 //    private int id;
-    private UUID id;
+//    private UUID id;
 
     @Basic
 //    @Column(name = "name")
@@ -35,7 +35,7 @@ import java.util.UUID;
     @Formula("id + age")
     private int isPlusAge;
 
-
+@EmbeddedId
     private Adress adress;
 
 
@@ -90,11 +90,11 @@ public Student(String name, Days days, Date date) {
         this.adress = adress;
     }
 
-    public UUID getID() {
-        return id;
-    }
-
-    public void setID(UUID id) {
-        this.id = id;
-    }
+//    public UUID getID() {
+//        return id;
+//    }
+//
+//    public void setID(UUID id) {
+//        this.id = id;
+//    }
 }
