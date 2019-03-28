@@ -2,18 +2,23 @@ package Hibernate;
 
 import Hibernate.enums.Days;
 import org.hibernate.annotations.*;
+import sun.java2d.loops.GeneralRenderer;
 
 import javax.persistence.*;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "student")
  class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int id;
+    private UUID id;
 
-    private int id;
     @Basic
 //    @Column(name = "name")
 //    @Type(type =  "text")
@@ -23,9 +28,9 @@ import java.util.Date;
     private Days days;
 //    @Temporal(TemporalType.DATE)
  //   @CreationTimestamp
+
     @UpdateTimestamp
     private Date date;
-
     private int age = 20;
     @Formula("id + age")
     private int isPlusAge;
@@ -46,21 +51,20 @@ public Student(String name, Days days, Date date) {
 }
 
 
-
-    @Id
-    @GeneratedValue
-    public int getId() {
-        return id;
-    }
     public Days getDays() {
         return days;
     }
+
     public void setDays(Days days) {
         this.days = days;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+
+//    public int getId() {
+//        return id;
+//    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return "Mr." + name;
@@ -84,5 +88,13 @@ public Student(String name, Days days, Date date) {
 
     public void setAdress(Adress adress) {
         this.adress = adress;
+    }
+
+    public UUID getID() {
+        return id;
+    }
+
+    public void setID(UUID id) {
+        this.id = id;
     }
 }
