@@ -3,11 +3,13 @@ package Hibernate;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 @Embeddable
 @Access(AccessType.FIELD)
 public class Adress {
-    String street;
+   // @Transient
+  transient   String street;
     int number;
 
     Adress() {}
