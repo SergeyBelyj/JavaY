@@ -5,9 +5,11 @@ import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name = "student")
  class Student {
     @Id
     @GeneratedValue
