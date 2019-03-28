@@ -1,5 +1,6 @@
 package Hibernate;
 
+import Hibernate.enums.Days;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -13,7 +14,7 @@ public class WhatIsHibernate {
       try(SessionFactory sessionFactory = new MetadataSources(registry).addAnnotatedClass(Student.class).buildMetadata().buildSessionFactory();
         Session session = sessionFactory.openSession()) {
           session.beginTransaction();
-          session.save(new Student("sergey"));
+          session.save(new Student("sergey", Days.MONDAY));
           session.getTransaction().commit();
         }
       }

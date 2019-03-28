@@ -1,5 +1,6 @@
 package Hibernate;
 
+import Hibernate.enums.Days;
 import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.Type;
 
@@ -12,29 +13,30 @@ import java.util.Date;
     @GeneratedValue
     int id;
 
-    public Date getDt() {
-        return dt;
-    }
-
-    public void setDt(Date dt) {
-        this.dt = dt;
-    }
-
     @Basic
-    @Column(name = "name")
-    @Type(type =  "text")
-
+//    @Column(name = "name")
+//    @Type(type =  "text")
     String name;
-    @Type(type = "timestamp")
-    private Date dt;
 
-public Student() {
+    Student() {
+    }
 
+    public Days getDays() {
+        return days;
+    }
+
+    public void setDays(Days days) {
+        this.days = days;
+    }
+@Enumerated(EnumType.STRING)
+    private Days days;
+
+public Student(String name, Days days) {
+    this.days = days;
+    this.name = name;
 }
 
-    public Student(String name) {
-        this.name = name;
-    }
+
 
     public int getId() {
         return id;
