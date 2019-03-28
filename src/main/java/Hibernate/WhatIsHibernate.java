@@ -16,11 +16,11 @@ public class WhatIsHibernate {
       try(SessionFactory sessionFactory = new MetadataSources(registry).addAnnotatedClass(Student.class).buildMetadata().buildSessionFactory();
         Session session = sessionFactory.openSession()) {
           session.beginTransaction();
-      //    session.save(new Student("sergey", Days.MONDAY, new Date()));
+         session.save(new Student("sergey", Days.MONDAY, new Date()));
          Student load =  session.load(Student.class,4);
-         Student get =  session.get(Student.class, 4);
-          System.out.println(load.getName());
-          System.out.println(get.getName());
+      //   Student get =  session.get(Student.class, 4);
+          System.out.println(load.getIsPlusAge());
+     //     System.out.println(get.getName());
           session.getTransaction().commit();
         }
       }
