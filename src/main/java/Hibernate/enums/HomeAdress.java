@@ -1,9 +1,6 @@
 package Hibernate.enums;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class HomeAdress {
@@ -11,7 +8,7 @@ public class HomeAdress {
     @GeneratedValue
     int id;
     String street;
-    @OneToOne
+    @ManyToOne
     Person person;
 
     public HomeAdress(String street) {

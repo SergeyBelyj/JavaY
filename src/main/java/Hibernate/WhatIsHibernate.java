@@ -9,7 +9,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class WhatIsHibernate {
@@ -19,7 +21,9 @@ public class WhatIsHibernate {
         Session session = sessionFactory.openSession()) {
           session.beginTransaction();
           HomeAdress homeAdress = new HomeAdress("Lenina");
-          Person person = new Person("Sertgey", homeAdress);
+          List<HomeAdress> list = new ArrayList<>();
+          Person person = new Person("Sertgey", list);
+          list.add(homeAdress);
           //  session.persist(homeAdress);
           homeAdress.setPerson(person);
           session.persist(homeAdress);
