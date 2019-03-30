@@ -1,6 +1,7 @@
 package Hibernate.enums;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class HomeAdress {
@@ -8,14 +9,17 @@ public class HomeAdress {
     @GeneratedValue
     int id;
     String street;
-    @ManyToOne
-    Person person;
+    @ManyToMany
+    List<Person> person;
+
+    public HomeAdress() {
+    }
 
     public HomeAdress(String street) {
         this.street = street;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(List<Person> person) {
         this.person = person;
     }
 }

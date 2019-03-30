@@ -14,9 +14,13 @@ public class Person {
     private String name;
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @LazyToOne(LazyToOneOption.NO_PROXY)
-    @OneToMany(mappedBy = "person")
+//    @OneToMany(mappedBy = "person")
+    @ManyToMany
 //    @JoinColumn(name = "HomeId")
     private List<HomeAdress> homeAdress;
+
+    public Person() {
+    }
 
     public Person(String name, List<HomeAdress> homeAdress) {
         this.name = name;
