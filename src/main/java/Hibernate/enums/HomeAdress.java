@@ -9,7 +9,7 @@ public class HomeAdress {
     @GeneratedValue
     int id;
     String street;
-    @ManyToMany
+     @ManyToMany
     List<Person> person;
 
     public HomeAdress() {

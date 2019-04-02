@@ -16,6 +16,10 @@ public class Person {
 //    @LazyToOne(LazyToOneOption.NO_PROXY)
 //    @OneToMany(mappedBy = "person")
     @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "personId"),
+            inverseJoinColumns = @JoinColumn(name = "homeId")
+    )
 //    @JoinColumn(name = "HomeId")
     private List<HomeAdress> homeAdress;
 
