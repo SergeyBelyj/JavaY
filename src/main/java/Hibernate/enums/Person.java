@@ -12,22 +12,21 @@ public class Person {
     @GeneratedValue
     private int id;
     private String name;
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @LazyToOne(LazyToOneOption.NO_PROXY)
-//    @OneToMany(mappedBy = "person")
-    @ManyToMany
-    @JoinTable(
-            joinColumns = @JoinColumn(name = "personId"),
-            inverseJoinColumns = @JoinColumn(name = "homeId")
-    )
-//    @JoinColumn(name = "HomeId")
+    @ElementCollection
     private List<HomeAdress> homeAdress;
-
+    @ElementCollection
+    private List<Integer> sergey;
     public Person() {
     }
 
     public Person(String name, List<HomeAdress> homeAdress) {
         this.name = name;
         this.homeAdress =  homeAdress;
+    }
+
+    public Person(String name, List<HomeAdress> homeAdress, List<Integer> sergey) {
+        this.name = name;
+        this.homeAdress = homeAdress;
+        this.sergey = sergey;
     }
 }
