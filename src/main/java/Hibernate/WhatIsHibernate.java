@@ -29,12 +29,14 @@ public class WhatIsHibernate {
 //          marks.add(1);
 //          marks.add(3);
 //          marks.add(2);
-//
-//          Person person = new Person("Sertgey", list, marks);//
+
+        Person iCode =  session.byNaturalId(Person.class).using("iCode","123").getReference();
+          System.out.println(iCode);
+//          Person person = new Person("Sertgey", list, marks,"123");//
 //          session.persist(person);
-//
-          Person load = session.load(Person.class, 10);
-          System.out.println(load.getMarks());
+
+//          Person load = session.load(Person.class, 10);
+//          System.out.println(load.getMarks());
 
           session.getTransaction().commit();
 
