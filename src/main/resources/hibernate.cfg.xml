@@ -13,8 +13,9 @@
 
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping class="Hibernate.enums.Person"/>
-    <mapping class="Hibernate.enums.HomeAdress"/>
+    <mapping resource ="Book.hbm.xml"></mapping>
+    <!--<mapping class="Hibernate.enums.Person"/>-->
+    <!--<mapping class="Hibernate.enums.HomeAdress"/>-->
 
 
 

@@ -10,7 +10,9 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class WhatIsHibernate {
@@ -30,13 +32,19 @@ public class WhatIsHibernate {
 //          marks.add(3);
 //          marks.add(2);
 
-        Person iCode =  session.byNaturalId(Person.class).using("iCode","123").getReference();
-          System.out.println(iCode);
+//        Person iCode =  session.byNaturalId(Person.class).using("iCode","124").getReference();
+//          System.out.println(iCode);
 //          Person person = new Person("Sertgey", list, marks,"123");//
 //          session.persist(person);
 
 //          Person load = session.load(Person.class, 10);
 //          System.out.println(load.getMarks());
+
+          Map<String,String> book = new HashMap<>();
+          book.put("isbn", "asdf");
+          book.put("title", "e32r4f");
+          book.put("author", "ewfgfvb7463gf");
+          session.save("Book", book);
 
           session.getTransaction().commit();
 
