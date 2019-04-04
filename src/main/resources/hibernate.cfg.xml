@@ -13,7 +13,10 @@
 
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping resource ="Book.hbm.xml"></mapping>
+    <mapping class="Hibernate.Car"/>
+    <mapping class="Hibernate.enums.Toyota"/>
+    <mapping class="Hibernate.enums.Opel"/>
+    <!--<mapping resource ="Book.hbm.xml"></mapping>-->
     <!--<mapping class="Hibernate.enums.Person"/>-->
     <!--<mapping class="Hibernate.enums.HomeAdress"/>-->
 

@@ -1,8 +1,6 @@
 package Hibernate;
 
-import Hibernate.enums.Days;
-import Hibernate.enums.HomeAdress;
-import Hibernate.enums.Person;
+import Hibernate.enums.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -40,11 +38,18 @@ public class WhatIsHibernate {
 //          Person load = session.load(Person.class, 10);
 //          System.out.println(load.getMarks());
 
-          Map<String,String> book = new HashMap<>();
-          book.put("isbn", "asdf");
-          book.put("title", "e32r4f");
-          book.put("author", "ewfgfvb7463gf");
-          session.save("Book", book);
+//          Map<String,String> book = new HashMap<>();
+//          book.put("isbn", "asdf");
+//          book.put("title", "e32r4f");
+//          book.put("author", "ewfgfvb7463gf");
+//          session.save("Book", book);
+          Car car = new Toyota("123", "220");
+          Car car2 = new Opel("321", 20000);
+          Car car3 = new Car("213");
+          session.persist(car);
+          session.persist(car2);
+//          session.persist(car3);
+
 
           session.getTransaction().commit();
 
