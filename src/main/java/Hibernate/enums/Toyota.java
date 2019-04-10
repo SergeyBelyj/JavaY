@@ -4,7 +4,7 @@ import Hibernate.Car;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Toyota extends Car {
     private String maxSpeed;
 

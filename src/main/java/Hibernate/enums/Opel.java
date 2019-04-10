@@ -4,7 +4,7 @@ import Hibernate.Car;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Opel extends Car {
     private int price;
 
