@@ -1,19 +1,8 @@
 package Hibernate;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.OptimisticLock;
-import org.hibernate.annotations.OptimisticLockType;
-import org.hibernate.annotations.OptimisticLocking;
-
 import javax.persistence.*;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@MappedSuperclass
-
-//@OptimisticLocking(type = OptimisticLockType.VERSION)
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Car {
     @Id
     @GeneratedValue
