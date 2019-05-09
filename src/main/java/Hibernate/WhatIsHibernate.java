@@ -20,14 +20,17 @@ public class WhatIsHibernate extends Thread{
           session.beginTransaction();
 //          Car car = new Car("12");
 //          session.persist(car);
-          Query query = session.createQuery("from Car ");
-          query.setMaxResults(3);
-          query.setFirstResult(1);
+          Query query = session.createQuery("from Car c order by c.number ");
+//          query.setMaxResults(3);
+//          query.setFirstResult(1);
 //          query.setParameter("number2", "321");
 //          query.setParameter("myId",3);
           List<Car> list = query.list();
-          System.out.println(list.size());
-          System.out.println(list.get(0).getId());
+          for(Car car : list) {
+
+              System.out.println(car.getNumber());
+          }
+//          System.out.println(list.get(0).getId());
 
 //          Car car = (Car) query.uniqueResult();
 //          System.out.println(car.getId());
