@@ -1,6 +1,7 @@
 package Hibernate;
 
 import Hibernate.enums.*;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -12,37 +13,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static sun.misc.PostVMInitHook.run;
 
 public class WhatIsHibernate {
     public static void main(String[] args) {
      final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
       try(SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        Session session2 = sessionFactory.openSession()){
+
           session.beginTransaction();
-
           Car car = new Car("123");
-          System.out.println(car.getId());
           session.persist(car);
-          session.flush();
-          System.out.println(car.getId());
-//          car.setNumber("321");
-//          session.detach(car);
-//          car.setNumber("456");
-//          session.remove(car);
-          car.setNumber("789");
-          session.refresh(car);
-//          System.out.println(car.getId());
-//          System.out.println(car.getNumber());
-//          session.merge(car);
-//          session.update(car);
-//          session.persist(car2);
-//          session.persist(car3);
-
-
           session.getTransaction().commit();
 
+        final int carId = car.getId();
 
+          new Thread(() -> {
+              session.beginTransaction();
+              Car car1 = session.load(Car.class, carId, LockMode.PESSIMISTIC_WRITE);
+              car1.setNumber(car1.getNumber() + "4");
+              session.getTransaction().commit();
+              try {Thread.sleep(7000);} catch (InterruptedException e) {}
 
-        }
+          }).start();
+
+          new Thread() {
+              @Override
+              public void run() {
+                  session2.beginTransaction();
+                  Car car = session2.load(Car.class, carId, LockMode.PESSIMISTIC_WRITE);
+                  car.setNumber(car.getNumber() + "5");
+                  session2.getTransaction().commit();
+              }
+          }.start();
+          try {Thread.sleep(600);} catch (InterruptedException e) {}
+      }
     }
 }
