@@ -25,7 +25,6 @@ public class WhatIsHibernate extends Thread{
           for(String car : list) {
               System.out.println(car);
           }
-
           session.getTransaction().commit();
 
       }
